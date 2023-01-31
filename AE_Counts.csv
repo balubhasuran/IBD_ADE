@@ -1,0 +1,169 @@
+Source,Target,Weight,Drugclass
+Clostridium difficile colitis,Adalimumab,1,Anti-TNF
+Pneumonia,Adalimumab,1,Anti-TNF
+Abdominal abscess,Adalimumab,11,Anti-TNF
+Septic shock,Adalimumab,4,Anti-TNF
+Sinusitis,Adalimumab,1,Anti-TNF
+Salmonellosis,Adalimumab,1,Anti-TNF
+Herpes zoster,Adalimumab,1,Anti-TNF
+Pneumonia cytomegaloviral,Adalimumab,1,Anti-TNF
+Inflammation,Adalimumab,74,Anti-TNF
+Constipation,Adalimumab,31,Anti-TNF
+Intestinal stenosis,Adalimumab,2,Anti-TNF
+Large intestine perforation,Adalimumab,4,Anti-TNF
+Arthralgia,Adalimumab,1,Anti-TNF
+Rhabdomyolysis,Adalimumab,1,Anti-TNF
+Muscle spasms,Adalimumab,1,Anti-TNF
+Vomiting,Adalimumab,10,Anti-TNF
+Gastrointestinal haemorrhage,Adalimumab,1,Anti-TNF
+Appendicitis,Adalimumab,1,Anti-TNF
+Intussusception,Adalimumab,1,Anti-TNF
+Pancreatitis,Adalimumab,1,Anti-TNF
+Pyrexia,Adalimumab,2,Anti-TNF
+Fatigue,Adalimumab,1,Anti-TNF
+Dehydration,Adalimumab,3,Anti-TNF
+Oedema,Adalimumab,1,Anti-TNF
+Presyncope,Adalimumab,1,Anti-TNF
+Chills,Adalimumab,2,Anti-TNF
+Deep vein thrombosis,Adalimumab,1,Anti-TNF
+Rash,Adalimumab,1,Anti-TNF
+Cardiomyopathy,Adalimumab,1,Anti-TNF
+Chest pain,Adalimumab,1,Anti-TNF
+Acute kidney injury,Adalimumab,1,Anti-TNF
+Renal tubular necrosis,Adalimumab,1,Anti-TNF
+Migraine,Adalimumab,3,Anti-TNF
+Metabolic encephalopathy,Adalimumab,1,Anti-TNF
+Uveitis,Adalimumab,1,Anti-TNF
+Klebsiella bacteraemia,Certolizumab,1,Anti-TNF
+Septic shock,Certolizumab,1,Anti-TNF
+Pneumonia cytomegaloviral,Certolizumab,1,Anti-TNF
+Inflammation,Certolizumab,9,Anti-TNF
+Intestinal obstruction,Certolizumab,9,Anti-TNF
+Nausea,Certolizumab,2,Anti-TNF
+Fatigue,Certolizumab,1,Anti-TNF
+Malnutrition,Certolizumab,1,Anti-TNF
+Asthenia,Certolizumab,1,Anti-TNF
+Inflammation,Etanercept,1,Anti-TNF
+Inflammation,Golimumab,2,Anti-TNF
+Clostridium difficile colitis,Infliximab,5,Anti-TNF
+Pneumonia,Infliximab,4,Anti-TNF
+Abdominal abscess,Infliximab,8,Anti-TNF
+Septic shock,Infliximab,4,Anti-TNF
+Pulmonary tuberculosis,Infliximab,1,Anti-TNF
+Endocarditis,Infliximab,1,Anti-TNF
+Cellulitis,Infliximab,1,Anti-TNF
+Atypical pneumonia,Infliximab,1,Anti-TNF
+Herpes virus infection,Infliximab,2,Anti-TNF
+Pneumonia cytomegaloviral,Infliximab,1,Anti-TNF
+Gastroenteritis norovirus,Infliximab,1,Anti-TNF
+HIV infection,Infliximab,1,Anti-TNF
+Meningitis viral,Infliximab,1,Anti-TNF
+Viraemia,Infliximab,1,Anti-TNF
+Infection,Infliximab,1,Anti-TNF
+Systemic candida,Infliximab,1,Anti-TNF
+Inflammation,Infliximab,102,Anti-TNF
+Small intestinal obstruction,Infliximab,36,Anti-TNF
+Intestinal stenosis,Infliximab,1,Anti-TNF
+Intestinal perforation,Infliximab,1,Anti-TNF
+Nausea,Infliximab,6,Anti-TNF
+Hepatitis,Infliximab,3,Anti-TNF
+Diverticulitis,Infliximab,2,Anti-TNF
+Abdominal distension,Infliximab,2,Anti-TNF
+Arterial injury,Infliximab,1,Anti-TNF
+Anastomotic leak,Infliximab,1,Anti-TNF
+Gastrointestinal haemorrhage,Infliximab,2,Anti-TNF
+Appendicitis,Infliximab,1,Anti-TNF
+Cholangitis,Infliximab,1,Anti-TNF
+Pyrexia,Infliximab,8,Anti-TNF
+Fatigue,Infliximab,4,Anti-TNF
+Malnutrition,Infliximab,3,Anti-TNF
+Hypotension,Infliximab,2,Anti-TNF
+Chills,Infliximab,1,Anti-TNF
+Thrombocytopenia,Infliximab,1,Anti-TNF
+Deep vein thrombosis,Infliximab,3,Anti-TNF
+Sarcoma,Infliximab,1,Anti-TNF
+Adrenal insufficiency,Infliximab,1,Anti-TNF
+Rash,Infliximab,1,Anti-TNF
+Tachycardia,Infliximab,1,Anti-TNF
+Myocarditis,Infliximab,1,Anti-TNF
+Arrhythmia,Infliximab,1,Anti-TNF
+Pleural effusion,Infliximab,2,Anti-TNF
+Dyspnoea,Infliximab,1,Anti-TNF
+Encephalitis,Infliximab,1,Anti-TNF
+Cerebrovascular accident,Infliximab,1,Anti-TNF
+Confusional state,Infliximab,1,Anti-TNF
+Pneumonia,Tofacitnib,1,JAK-inhibitor
+Abdominal abscess,Tofacitnib,1,JAK-inhibitor
+Inflammation,Tofacitnib,6,JAK-inhibitor
+Clostridium difficile colitis,Ustekinumab,2,Anti-IL-12/23
+Pneumonia,Ustekinumab,1,Anti-IL-12/23
+Klebsiella bacteraemia,Ustekinumab,2,Anti-IL-12/23
+Abdominal abscess,Ustekinumab,7,Anti-IL-12/23
+Septic shock,Ustekinumab,3,Anti-IL-12/23
+Cellulitis,Ustekinumab,1,Anti-IL-12/23
+Gastroenteritis aeromonas,Ustekinumab,1,Anti-IL-12/23
+Pharyngitis,Ustekinumab,1,Anti-IL-12/23
+Infection,Ustekinumab,1,Anti-IL-12/23
+Inflammation,Ustekinumab,35,Anti-IL-12/23
+Intestinal obstruction,Ustekinumab,34,Anti-IL-12/23
+Intestinal stenosis,Ustekinumab,1,Anti-IL-12/23
+Perineal pain,Ustekinumab,1,Anti-IL-12/23
+Intestinal resection,Ustekinumab,1,Anti-IL-12/23
+Peritonitis,Ustekinumab,1,Anti-IL-12/23
+Arthralgia,Ustekinumab,2,Anti-IL-12/23
+Vomiting,Ustekinumab,8,Anti-IL-12/23
+Internal hernia,Ustekinumab,1,Anti-IL-12/23
+Gastrointestinal haemorrhage,Ustekinumab,3,Anti-IL-12/23
+Appendicitis,Ustekinumab,2,Anti-IL-12/23
+Bile duct stone,Ustekinumab,1,Anti-IL-12/23
+Gastrointestinal bacterial overgrowth,Ustekinumab,1,Anti-IL-12/23
+Pyrexia,Ustekinumab,1,Anti-IL-12/23
+Malnutrition,Ustekinumab,4,Anti-IL-12/23
+Dehydration,Ustekinumab,1,Anti-IL-12/23
+Presyncope,Ustekinumab,1,Anti-IL-12/23
+Shock haemorrhagic,Ustekinumab,1,Anti-IL-12/23
+Deep vein thrombosis,Ustekinumab,1,Anti-IL-12/23
+Leukocytosis,Ustekinumab,1,Anti-IL-12/23
+Rash,Ustekinumab,1,Anti-IL-12/23
+Bradycardia,Ustekinumab,1,Anti-IL-12/23
+Hypokalaemia,Ustekinumab,1,Anti-IL-12/23
+Cerebrovascular accident,Ustekinumab,1,Anti-IL-12/23
+Pneumonia,Vedolizumab,1,Anti-integrin
+Klebsiella bacteraemia,Vedolizumab,1,Anti-integrin
+Abdominal abscess,Vedolizumab,4,Anti-integrin
+Arthritis bacterial,Vedolizumab,1,Anti-integrin
+Cellulitis,Vedolizumab,1,Anti-integrin
+Viral infection,Vedolizumab,1,Anti-integrin
+Inflammation,Vedolizumab,70,Anti-integrin
+Intestinal obstruction,Vedolizumab,13,Anti-integrin
+Perforation,Vedolizumab,1,Anti-integrin
+Hip fracture,Vedolizumab,1,Anti-integrin
+Tenosynovitis,Vedolizumab,1,Anti-integrin
+Nausea,Vedolizumab,6,Anti-integrin
+Diverticulitis,Vedolizumab,1,Anti-integrin
+Pyrexia,Vedolizumab,3,Anti-integrin
+Fatigue,Vedolizumab,2,Anti-integrin
+Malnutrition,Vedolizumab,4,Anti-integrin
+Dehydration,Vedolizumab,2,Anti-integrin
+Blood electrolytes abnormal,Vedolizumab,1,Anti-integrin
+Oedema,Vedolizumab,2,Anti-integrin
+Asthenia,Vedolizumab,1,Anti-integrin
+Lymphadenopathy,Vedolizumab,2,Anti-integrin
+Mass,Vedolizumab,1,Anti-integrin
+Psychotic disorder,Vedolizumab,1,Anti-integrin
+Hyperthyroidism,Vedolizumab,1,Anti-integrin
+Pyoderma gangrenosum,Vedolizumab,1,Anti-integrin
+Dyspnoea,Vedolizumab,1,Anti-integrin
+Stridor,Vedolizumab,1,Anti-integrin
+Cough,Vedolizumab,1,Anti-integrin
+Nephrotic syndrome,Vedolizumab,1,Anti-integrin
+Encephalitis,Vedolizumab,1,Anti-integrin
+Cerebrovascular accident,Vedolizumab,1,Anti-integrin
+Adalimumab,Anti-TNF,30,
+Certolizumab,Anti-TNF,30,
+Etanercept,Anti-TNF,30,
+Golimumab,Anti-TNF,30,
+Infliximab,Anti-TNF,30,
+Tofacitnib,JAK-inhibitor,30,
+Ustekinumab,Anti-IL-12/23,30,
+Vedolizumab,Anti-integrin,30,
