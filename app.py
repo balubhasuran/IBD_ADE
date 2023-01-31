@@ -17,7 +17,7 @@ st.markdown(f""" <style>
 
 
 # Read dataset (CSV)
-df_interact = pd.read_csv("AE Counts.csv")
+df_interact = pd.read_csv("AE_Counts.csv")
 
 # Set header title
 st.title('Serious Adverse Drug Events in Inflammatory bowel disease (IBD)')
