@@ -1,0 +1,171 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 1500px;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "#97c2fc", "id": "Klebsiella bacteraemia", "label": "Klebsiella bacteraemia", "shape": "dot", "title": "Klebsiella bacteraemia Neighbors:\u003cbr\u003eCertolizumab", "value": 1}, {"color": "#FF5C5C", "id": "Certolizumab", "label": "Certolizumab", "shape": "dot", "title": "Certolizumab Neighbors:\u003cbr\u003eFatigue\u003cbr\u003eAsthenia\u003cbr\u003ePneumonia cytomegaloviral\u003cbr\u003eMalnutrition\u003cbr\u003eIntestinal obstruction\u003cbr\u003eKlebsiella bacteraemia\u003cbr\u003eNausea\u003cbr\u003eSeptic shock\u003cbr\u003eInflammation\u003cbr\u003eAnti-TNF", "value": 10}, {"color": "#97c2fc", "id": "Septic shock", "label": "Septic shock", "shape": "dot", "title": "Septic shock Neighbors:\u003cbr\u003eCertolizumab\u003cbr\u003eInfliximab", "value": 2}, {"color": "#97c2fc", "id": "Pneumonia cytomegaloviral", "label": "Pneumonia cytomegaloviral", "shape": "dot", "title": "Pneumonia cytomegaloviral Neighbors:\u003cbr\u003eCertolizumab\u003cbr\u003eInfliximab", "value": 2}, {"color": "#97c2fc", "id": "Inflammation", "label": "Inflammation", "shape": "dot", "title": "Inflammation Neighbors:\u003cbr\u003eEtanercept\u003cbr\u003eCertolizumab\u003cbr\u003eInfliximab\u003cbr\u003eGolimumab\u003cbr\u003eTofacitnib", "value": 5}, {"color": "#97c2fc", "id": "Intestinal obstruction", "label": "Intestinal obstruction", "shape": "dot", "title": "Intestinal obstruction Neighbors:\u003cbr\u003eCertolizumab", "value": 1}, {"color": "#97c2fc", "id": "Nausea", "label": "Nausea", "shape": "dot", "title": "Nausea Neighbors:\u003cbr\u003eCertolizumab\u003cbr\u003eInfliximab", "value": 2}, {"color": "#97c2fc", "id": "Fatigue", "label": "Fatigue", "shape": "dot", "title": "Fatigue Neighbors:\u003cbr\u003eCertolizumab\u003cbr\u003eInfliximab", "value": 2}, {"color": "#97c2fc", "id": "Malnutrition", "label": "Malnutrition", "shape": "dot", "title": "Malnutrition Neighbors:\u003cbr\u003eCertolizumab\u003cbr\u003eInfliximab", "value": 2}, {"color": "#97c2fc", "id": "Asthenia", "label": "Asthenia", "shape": "dot", "title": "Asthenia Neighbors:\u003cbr\u003eCertolizumab", "value": 1}, {"color": "#FF5C5C", "id": "Etanercept", "label": "Etanercept", "shape": "dot", "title": "Etanercept Neighbors:\u003cbr\u003eInflammation\u003cbr\u003eAnti-TNF", "value": 2}, {"color": "#FF5C5C", "id": "Golimumab", "label": "Golimumab", "shape": "dot", "title": "Golimumab Neighbors:\u003cbr\u003eInflammation\u003cbr\u003eAnti-TNF", "value": 2}, {"color": "#97c2fc", "id": "Clostridium difficile colitis", "label": "Clostridium difficile colitis", "shape": "dot", "title": "Clostridium difficile colitis Neighbors:\u003cbr\u003eInfliximab", "value": 1}, {"color": "#FF5C5C", "id": "Infliximab", "label": "Infliximab", "shape": "dot", "title": "Infliximab Neighbors:\u003cbr\u003eMeningitis viral\u003cbr\u003eAppendicitis\u003cbr\u003eClostridium difficile colitis\u003cbr\u003eAnastomotic leak\u003cbr\u003eAtypical pneumonia\u003cbr\u003eCerebrovascular accident\u003cbr\u003ePulmonary tuberculosis\u003cbr\u003eSarcoma\u003cbr\u003eConfusional state\u003cbr\u003eHIV infection\u003cbr\u003eDyspnoea\u003cbr\u003eEndocarditis\u003cbr\u003eInfection\u003cbr\u003eSystemic candida\u003cbr\u003eHerpes virus infection\u003cbr\u003eMalnutrition\u003cbr\u003eViraemia\u003cbr\u003eGastrointestinal haemorrhage\u003cbr\u003eHypotension\u003cbr\u003eInflammation\u003cbr\u003eCellulitis\u003cbr\u003eArterial injury\u003cbr\u003eCholangitis\u003cbr\u003eAdrenal insufficiency\u003cbr\u003eRash\u003cbr\u003eHepatitis\u003cbr\u003eAbdominal distension\u003cbr\u003eChills\u003cbr\u003eDeep vein thrombosis\u003cbr\u003eMyocarditis\u003cbr\u003ePleural effusion\u003cbr\u003eTachycardia\u003cbr\u003eEncephalitis\u003cbr\u003eThrombocytopenia\u003cbr\u003eIntestinal stenosis\u003cbr\u003eDiverticulitis\u003cbr\u003eSeptic shock\u003cbr\u003eIntestinal perforation\u003cbr\u003ePyrexia\u003cbr\u003eFatigue\u003cbr\u003eSmall intestinal obstruction\u003cbr\u003eArrhythmia\u003cbr\u003ePneumonia cytomegaloviral\u003cbr\u003eNausea\u003cbr\u003eAbdominal abscess\u003cbr\u003eAnti-TNF\u003cbr\u003eGastroenteritis norovirus\u003cbr\u003ePneumonia", "value": 48}, {"color": "#97c2fc", "id": "Pneumonia", "label": "Pneumonia", "shape": "dot", "title": "Pneumonia Neighbors:\u003cbr\u003eInfliximab\u003cbr\u003eTofacitnib", "value": 2}, {"color": "#97c2fc", "id": "Abdominal abscess", "label": "Abdominal abscess", "shape": "dot", "title": "Abdominal abscess Neighbors:\u003cbr\u003eInfliximab\u003cbr\u003eTofacitnib", "value": 2}, {"color": "#97c2fc", "id": "Pulmonary tuberculosis", "label": "Pulmonary tuberculosis", "shape": "dot", "title": "Pulmonary tuberculosis Neighbors:\u003cbr\u003eInfliximab", "value": 1}, {"color": "#97c2fc", "id": "Endocarditis", "label": "Endocarditis", "shape": "dot", "title": "Endocarditis Neighbors:\u003cbr\u003eInfliximab", "value": 1}, {"color": "#97c2fc", "id": "Cellulitis", "label": "Cellulitis", "shape": "dot", "title": "Cellulitis Neighbors:\u003cbr\u003eInfliximab", "value": 1}, {"color": "#97c2fc", "id": "Atypical pneumonia", "label": "Atypical pneumonia", "shape": "dot", "title": "Atypical pneumonia Neighbors:\u003cbr\u003eInfliximab", "value": 1}, {"color": "#97c2fc", "id": "Herpes virus infection", "label": "Herpes virus infection", "shape": "dot", "title": "Herpes virus infection Neighbors:\u003cbr\u003eInfliximab", "value": 1}, {"color": "#97c2fc", "id": "Gastroenteritis norovirus", "label": "Gastroenteritis norovirus", "shape": "dot", "title": "Gastroenteritis norovirus Neighbors:\u003cbr\u003eInfliximab", "value": 1}, {"color": "#97c2fc", "id": "HIV infection", "label": "HIV infection", "shape": "dot", "title": "HIV infection Neighbors:\u003cbr\u003eInfliximab", "value": 1}, {"color": "#97c2fc", "id": "Meningitis viral", "label": "Meningitis viral", "shape": "dot", "title": "Meningitis viral Neighbors:\u003cbr\u003eInfliximab", "value": 1}, {"color": "#97c2fc", "id": "Viraemia", "label": "Viraemia", "shape": "dot", "title": "Viraemia Neighbors:\u003cbr\u003eInfliximab", "value": 1}, {"color": "#97c2fc", "id": "Infection", "label": "Infection", "shape": "dot", "title": "Infection Neighbors:\u003cbr\u003eInfliximab", "value": 1}, {"color": "#97c2fc", "id": "Systemic candida", "label": "Systemic candida", "shape": "dot", "title": "Systemic candida Neighbors:\u003cbr\u003eInfliximab", "value": 1}, {"color": "#97c2fc", "id": "Small intestinal obstruction", "label": "Small intestinal obstruction", "shape": "dot", "title": "Small intestinal obstruction Neighbors:\u003cbr\u003eInfliximab", "value": 1}, {"color": "#97c2fc", "id": "Intestinal stenosis", "label": "Intestinal stenosis", "shape": "dot", "title": "Intestinal stenosis Neighbors:\u003cbr\u003eInfliximab", "value": 1}, {"color": "#97c2fc", "id": "Intestinal perforation", "label": "Intestinal perforation", "shape": "dot", "title": "Intestinal perforation Neighbors:\u003cbr\u003eInfliximab", "value": 1}, {"color": "#97c2fc", "id": "Hepatitis", "label": "Hepatitis", "shape": "dot", "title": "Hepatitis Neighbors:\u003cbr\u003eInfliximab", "value": 1}, {"color": "#97c2fc", "id": "Diverticulitis", "label": "Diverticulitis", "shape": "dot", "title": "Diverticulitis Neighbors:\u003cbr\u003eInfliximab", "value": 1}, {"color": "#97c2fc", "id": "Abdominal distension", "label": "Abdominal distension", "shape": "dot", "title": "Abdominal distension Neighbors:\u003cbr\u003eInfliximab", "value": 1}, {"color": "#97c2fc", "id": "Arterial injury", "label": "Arterial injury", "shape": "dot", "title": "Arterial injury Neighbors:\u003cbr\u003eInfliximab", "value": 1}, {"color": "#97c2fc", "id": "Anastomotic leak", "label": "Anastomotic leak", "shape": "dot", "title": "Anastomotic leak Neighbors:\u003cbr\u003eInfliximab", "value": 1}, {"color": "#97c2fc", "id": "Gastrointestinal haemorrhage", "label": "Gastrointestinal haemorrhage", "shape": "dot", "title": "Gastrointestinal haemorrhage Neighbors:\u003cbr\u003eInfliximab", "value": 1}, {"color": "#97c2fc", "id": "Appendicitis", "label": "Appendicitis", "shape": "dot", "title": "Appendicitis Neighbors:\u003cbr\u003eInfliximab", "value": 1}, {"color": "#97c2fc", "id": "Cholangitis", "label": "Cholangitis", "shape": "dot", "title": "Cholangitis Neighbors:\u003cbr\u003eInfliximab", "value": 1}, {"color": "#97c2fc", "id": "Pyrexia", "label": "Pyrexia", "shape": "dot", "title": "Pyrexia Neighbors:\u003cbr\u003eInfliximab", "value": 1}, {"color": "#97c2fc", "id": "Hypotension", "label": "Hypotension", "shape": "dot", "title": "Hypotension Neighbors:\u003cbr\u003eInfliximab", "value": 1}, {"color": "#97c2fc", "id": "Chills", "label": "Chills", "shape": "dot", "title": "Chills Neighbors:\u003cbr\u003eInfliximab", "value": 1}, {"color": "#97c2fc", "id": "Thrombocytopenia", "label": "Thrombocytopenia", "shape": "dot", "title": "Thrombocytopenia Neighbors:\u003cbr\u003eInfliximab", "value": 1}, {"color": "#97c2fc", "id": "Deep vein thrombosis", "label": "Deep vein thrombosis", "shape": "dot", "title": "Deep vein thrombosis Neighbors:\u003cbr\u003eInfliximab", "value": 1}, {"color": "#97c2fc", "id": "Sarcoma", "label": "Sarcoma", "shape": "dot", "title": "Sarcoma Neighbors:\u003cbr\u003eInfliximab", "value": 1}, {"color": "#97c2fc", "id": "Adrenal insufficiency", "label": "Adrenal insufficiency", "shape": "dot", "title": "Adrenal insufficiency Neighbors:\u003cbr\u003eInfliximab", "value": 1}, {"color": "#97c2fc", "id": "Rash", "label": "Rash", "shape": "dot", "title": "Rash Neighbors:\u003cbr\u003eInfliximab", "value": 1}, {"color": "#97c2fc", "id": "Tachycardia", "label": "Tachycardia", "shape": "dot", "title": "Tachycardia Neighbors:\u003cbr\u003eInfliximab", "value": 1}, {"color": "#97c2fc", "id": "Myocarditis", "label": "Myocarditis", "shape": "dot", "title": "Myocarditis Neighbors:\u003cbr\u003eInfliximab", "value": 1}, {"color": "#97c2fc", "id": "Arrhythmia", "label": "Arrhythmia", "shape": "dot", "title": "Arrhythmia Neighbors:\u003cbr\u003eInfliximab", "value": 1}, {"color": "#97c2fc", "id": "Pleural effusion", "label": "Pleural effusion", "shape": "dot", "title": "Pleural effusion Neighbors:\u003cbr\u003eInfliximab", "value": 1}, {"color": "#97c2fc", "id": "Dyspnoea", "label": "Dyspnoea", "shape": "dot", "title": "Dyspnoea Neighbors:\u003cbr\u003eInfliximab", "value": 1}, {"color": "#97c2fc", "id": "Encephalitis", "label": "Encephalitis", "shape": "dot", "title": "Encephalitis Neighbors:\u003cbr\u003eInfliximab", "value": 1}, {"color": "#97c2fc", "id": "Cerebrovascular accident", "label": "Cerebrovascular accident", "shape": "dot", "title": "Cerebrovascular accident Neighbors:\u003cbr\u003eInfliximab", "value": 1}, {"color": "#97c2fc", "id": "Confusional state", "label": "Confusional state", "shape": "dot", "title": "Confusional state Neighbors:\u003cbr\u003eInfliximab", "value": 1}, {"color": "#FF5C5C", "id": "Tofacitnib", "label": "Tofacitnib", "shape": "dot", "title": "Tofacitnib Neighbors:\u003cbr\u003eInflammation\u003cbr\u003eJAK-inhibitor\u003cbr\u003eAbdominal abscess\u003cbr\u003ePneumonia", "value": 4}, {"color": "#97c2fc", "id": "Anti-TNF", "label": "Anti-TNF", "shape": "dot", "title": "Anti-TNF Neighbors:\u003cbr\u003eCertolizumab\u003cbr\u003eInfliximab\u003cbr\u003eEtanercept\u003cbr\u003eGolimumab", "value": 4}, {"color": "#97c2fc", "id": "JAK-inhibitor", "label": "JAK-inhibitor", "shape": "dot", "title": "JAK-inhibitor Neighbors:\u003cbr\u003eTofacitnib", "value": 1}]);
+                  edges = new vis.DataSet([{"from": "Klebsiella bacteraemia", "to": "Certolizumab", "value": 1}, {"from": "Septic shock", "to": "Certolizumab", "value": 1}, {"from": "Pneumonia cytomegaloviral", "to": "Certolizumab", "value": 1}, {"from": "Inflammation", "to": "Certolizumab", "value": 9}, {"from": "Intestinal obstruction", "to": "Certolizumab", "value": 9}, {"from": "Nausea", "to": "Certolizumab", "value": 2}, {"from": "Fatigue", "to": "Certolizumab", "value": 1}, {"from": "Malnutrition", "to": "Certolizumab", "value": 1}, {"from": "Asthenia", "to": "Certolizumab", "value": 1}, {"from": "Inflammation", "to": "Etanercept", "value": 1}, {"from": "Inflammation", "to": "Golimumab", "value": 2}, {"from": "Clostridium difficile colitis", "to": "Infliximab", "value": 5}, {"from": "Pneumonia", "to": "Infliximab", "value": 4}, {"from": "Abdominal abscess", "to": "Infliximab", "value": 8}, {"from": "Septic shock", "to": "Infliximab", "value": 4}, {"from": "Pulmonary tuberculosis", "to": "Infliximab", "value": 1}, {"from": "Endocarditis", "to": "Infliximab", "value": 1}, {"from": "Cellulitis", "to": "Infliximab", "value": 1}, {"from": "Atypical pneumonia", "to": "Infliximab", "value": 1}, {"from": "Herpes virus infection", "to": "Infliximab", "value": 2}, {"from": "Pneumonia cytomegaloviral", "to": "Infliximab", "value": 1}, {"from": "Gastroenteritis norovirus", "to": "Infliximab", "value": 1}, {"from": "HIV infection", "to": "Infliximab", "value": 1}, {"from": "Meningitis viral", "to": "Infliximab", "value": 1}, {"from": "Viraemia", "to": "Infliximab", "value": 1}, {"from": "Infection", "to": "Infliximab", "value": 1}, {"from": "Systemic candida", "to": "Infliximab", "value": 1}, {"from": "Inflammation", "to": "Infliximab", "value": 102}, {"from": "Small intestinal obstruction", "to": "Infliximab", "value": 36}, {"from": "Intestinal stenosis", "to": "Infliximab", "value": 1}, {"from": "Intestinal perforation", "to": "Infliximab", "value": 1}, {"from": "Nausea", "to": "Infliximab", "value": 6}, {"from": "Hepatitis", "to": "Infliximab", "value": 3}, {"from": "Diverticulitis", "to": "Infliximab", "value": 2}, {"from": "Abdominal distension", "to": "Infliximab", "value": 2}, {"from": "Arterial injury", "to": "Infliximab", "value": 1}, {"from": "Anastomotic leak", "to": "Infliximab", "value": 1}, {"from": "Gastrointestinal haemorrhage", "to": "Infliximab", "value": 2}, {"from": "Appendicitis", "to": "Infliximab", "value": 1}, {"from": "Cholangitis", "to": "Infliximab", "value": 1}, {"from": "Pyrexia", "to": "Infliximab", "value": 8}, {"from": "Fatigue", "to": "Infliximab", "value": 4}, {"from": "Malnutrition", "to": "Infliximab", "value": 3}, {"from": "Hypotension", "to": "Infliximab", "value": 2}, {"from": "Chills", "to": "Infliximab", "value": 1}, {"from": "Thrombocytopenia", "to": "Infliximab", "value": 1}, {"from": "Deep vein thrombosis", "to": "Infliximab", "value": 3}, {"from": "Sarcoma", "to": "Infliximab", "value": 1}, {"from": "Adrenal insufficiency", "to": "Infliximab", "value": 1}, {"from": "Rash", "to": "Infliximab", "value": 1}, {"from": "Tachycardia", "to": "Infliximab", "value": 1}, {"from": "Myocarditis", "to": "Infliximab", "value": 1}, {"from": "Arrhythmia", "to": "Infliximab", "value": 1}, {"from": "Pleural effusion", "to": "Infliximab", "value": 2}, {"from": "Dyspnoea", "to": "Infliximab", "value": 1}, {"from": "Encephalitis", "to": "Infliximab", "value": 1}, {"from": "Cerebrovascular accident", "to": "Infliximab", "value": 1}, {"from": "Confusional state", "to": "Infliximab", "value": 1}, {"from": "Pneumonia", "to": "Tofacitnib", "value": 1}, {"from": "Abdominal abscess", "to": "Tofacitnib", "value": 1}, {"from": "Inflammation", "to": "Tofacitnib", "value": 6}, {"from": "Certolizumab", "to": "Anti-TNF", "value": 30}, {"from": "Etanercept", "to": "Anti-TNF", "value": 30}, {"from": "Golimumab", "to": "Anti-TNF", "value": 30}, {"from": "Infliximab", "to": "Anti-TNF", "value": 30}, {"from": "Tofacitnib", "to": "JAK-inhibitor", "value": 30}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "barnesHut": {
+            "avoidOverlap": 0,
+            "centralGravity": 0.3,
+            "damping": 0.09,
+            "gravitationalConstant": -80000,
+            "springConstant": 0.006,
+            "springLength": 250
+        },
+        "enabled": true,
+        "repulsion": {
+            "centralGravity": 0.33,
+            "damping": 0.95,
+            "nodeDistance": 420,
+            "springConstant": 0.1,
+            "springLength": 110
+        },
+        "solver": "repulsion",
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>
